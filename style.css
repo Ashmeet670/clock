@@ -29,17 +29,19 @@ body{
     box-shadow: 0px 0px 3px 5px var(--shadow);
     width: fit-content;
     border: 5px solid var(--primary);
+    margin-top: 15vh;
 }   
 
 .clockFont{
     font-family: clockFont, sans-serif;
-    font-size: clamp(30px,12vw, 135px);
+    font-size: clamp(30px,12vw, 155px);
 
 }
 
 .clockInfo{
     border-top: 6px solid var(--primary);
-    font-size: clamp(20px,5vw, 55px);
+    font-size: clamp(20px,5vw, 65px);
+    width: 100%;
 }
 
 #date{
