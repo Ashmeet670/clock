@@ -22,13 +22,14 @@ const months = {
     "10": 'November',
     "11": 'December'
   };
-  
 
-document.getElementById("time").innerText = Date().split(" ")[4]
+//   document.getElementById("time").innerText = `${Date().split(" ")[4].split(":")[0]-12}:${Date().split(" ")[4].split(":")[1]}:${Date().split(" ")[4].split(":")[2]}` 12hr
+  
+document.getElementById("time").innerText = `${Date().split(" ")[4]}`
 document.getElementById("day").innerText = days[new Date().getDay()]
 document.getElementById("date").innerText = `${new Date().getDate()} ${months[new Date().getMonth()]},${new Date().getFullYear()}`
 
 setInterval(() => {
-    document.getElementById("time").innerText = Date().split(" ")[4]
+    document.getElementById("time").innerText = `${Date().split(" ")[4]}`
 
 }, 1000);
