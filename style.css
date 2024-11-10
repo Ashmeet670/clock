@@ -2,3 +2,47 @@
     font-family: "clockFont";
     src: url('/DigitalDisplayRegular-ODEO.ttf');
 }
+@font-face {
+    font-family: "clocktext";
+    src: url('/digital-7M.ttf');
+}
+
+:root{
+    --primary: rgb(245, 245, 245);
+    --secondary: white;
+    --primaryText: black;
+    --shadow: rgb(230, 230, 230);
+}
+*{
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body{
+    background-color: var(--primary);
+}
+
+.clockBox{
+    font-family: clocktext, sans-serif;
+    color: var(--primaryText);
+    background-color: var(--secondary);
+    box-shadow: 0px 0px 3px 5px var(--shadow);
+    width: fit-content;
+    border: 5px solid var(--primary);
+}   
+
+.clockFont{
+    font-family: clockFont, sans-serif;
+    font-size: clamp(30px,12vw, 135px);
+
+}
+
+.clockInfo{
+    border-top: 6px solid var(--primary);
+    font-size: clamp(20px,5vw, 55px);
+}
+
+#date{
+    border-left: 6px solid var(--primary);
+
+}
