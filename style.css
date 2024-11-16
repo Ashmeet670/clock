@@ -13,13 +13,13 @@
     --secondary: white;
     --primaryText: black;
     --shadow: rgb(200, 200, 200);
-    --border: rgba(0,0,0,0)
 
 }
 
 * {
     user-select: none;
     -webkit-user-select: none;
+    cursor: default;
 }
 
 body {
@@ -29,14 +29,11 @@ body {
 .clockBox {
     font-family: clocktext, sans-serif;
     color: var(--primaryText);
-    background-color: rgba(201, 201, 201, 0.267);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0px 0px 1vw 0.2vw var(--shadow);
+    background-color: var(--secondary);
     width: fit-content;
     margin-top: 15vh;
     min-width: 40vw;
-
+    max-width: 90vw;
 }
 
 .clockFont {
@@ -46,14 +43,15 @@ body {
 }
 
 .clockInfo {
-    border-top: 6px solid var(--border);
+    border-top: 6px solid var(--primary);
     font-size: clamp(22px, 7vw, 65px);
     width: 100%;
 }
 
 #date {
-    border-left: 6px solid var(--border);
+    border-left: 6px solid var(--primary);
 }
+
 #ampm {
     font-size: clamp(17px, 5vw, 35px);
 }
@@ -63,9 +61,17 @@ body {
 @media only screen and (max-width:576px) {
     .clockBox {
         border: 3px solid var(--primary);
+        min-width: 85vw;
+
     }
 
     .clockInfo {
-        border-top: 4px solid var(--border);
+        border-top: 4px solid var(--primary);
+    }
+
+    #date {
+        border-top: 4px solid var(--primary);
+        border-left: none;
+
     }
 }
