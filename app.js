@@ -1,11 +1,11 @@
 const days = {
-    "0":"Sunday",
-    "1":"monday",
-    "2":"tuesday",
-    "3":"wednesday",
-    "4":"thursday",
-    "5":"friday",
-    "6":"saturday",
+    "0": "Sunday",
+    "1": "monday",
+    "2": "tuesday",
+    "3": "wednesday",
+    "4": "thursday",
+    "5": "friday",
+    "6": "saturday",
 }
 
 const months = {
@@ -21,10 +21,10 @@ const months = {
     "9": 'October',
     "10": 'November',
     "11": 'December'
-  };
+};
 
 //   document.getElementById("time").innerText = `${Date().split(" ")[4].split(":")[0]-12}:${Date().split(" ")[4].split(":")[1]}:${Date().split(" ")[4].split(":")[2]}` 12hr
-  
+
 document.getElementById("time").innerText = `${Date().split(" ")[4]}`
 document.getElementById("day").innerText = days[new Date().getDay()]
 document.getElementById("date").innerText = `${new Date().getDate()} ${months[new Date().getMonth()]},${new Date().getFullYear()}`
@@ -36,8 +36,27 @@ setInterval(() => {
 
 
 function buttonClick(btn) {
-  btn.classList.add('buttonClick')
-  setTimeout(() => {
-      btn.classList.remove('buttonClick')
-  }, 350);
+    btn.classList.add('buttonClick')
+    setTimeout(() => {
+        btn.classList.remove('buttonClick')
+    }, 300);
+}
+
+
+function checkboxToggle(box, property) {
+    if (box.getAttribute('aria-state') == "on") {
+        box.classList.remove("checkboxOn")
+        box.classList.add("checkboxOffAnim")
+        setTimeout(() => {
+            box.classList.remove("checkboxOffAnim")
+        }, 450);
+        box.setAttribute('aria-state', "off")
+
+    }
+    else if (box.getAttribute('aria-state') == "off") {
+
+        box.classList.add("checkboxOn")
+        box.setAttribute('aria-state', "on")
+    }
+
 }
