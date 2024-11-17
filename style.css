@@ -13,7 +13,7 @@
     --secondary: white;
     --primaryText: black;
     --shadow: rgb(200, 200, 200);
-
+    --checkBoxOn: rgb(0, 200, 255);
 }
 
 * {
@@ -52,7 +52,7 @@ body {
     border-left: 6px solid var(--primary);
 }
 
-.settings{
+.settings {
     position: absolute;
     bottom: 4vh;
     left: 2vh;
@@ -61,37 +61,116 @@ body {
     height: fit-content;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 2px var(--shadow);
-    cursor:  pointer !important;
+    cursor: pointer !important;
 }
 
-.settings>svg{
+.settings>svg {
     fill: var(--primaryText);
 }
 
-.settingsBar{
+.settingsBar {
+    min-width: 50vw;
+    width: fit-content;
     position: absolute;
     left: 0;
     top: 0;
     height: 100vh;
     background-color: var(--secondary);
     z-index: 1;
+    font-size: clamp(20px, 2vw, 30px);
+
 }
 
-.settingTitle{
-    font-size: clamp();
-}
+@keyframes settingsIn {
 
-.buttonClick{
-    animation: buttonClick 0.4s 0s forwards;
-}
-@keyframes buttonClick {
-    0%{
-        scale: 1;
-    }
-    50%{
+    50% {
         scale: 0.7;
     }
-    100%{
+
+
+    100% {
+        scale: 1;
+        background-color: var(--checkBoxOn);
+    }
+}
+
+.cross>svg {
+    font-size: clamp(10px, 1.5vw, 15px);
+    fill: var(--primaryText);
+}
+
+.cross {
+    border-radius: 50%;
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer !important;
+}
+
+.settingTitle {
+    font-size: clamp(30px, 2.5vw, 40px);
+}
+
+.settingItem {
+    font-size: clamp(20px, 3vw, 25px);
+}
+
+.checkbox {
+    background-color: var(--primary);
+    border: 3px solid var(--primaryText);
+    width: 1em;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+
+}
+
+.checkboxOn {
+    animation: checkBoxOn 0.25s 0s forwards;
+}
+
+@keyframes checkBoxOn {
+
+    50% {
+        scale: 0.7;
+    }
+
+
+    100% {
+        scale: 1;
+        background-color: var(--checkBoxOn);
+    }
+}
+
+.checkboxOffAnim {
+    animation: checkBoxOff 0.25s 0s forwards;
+
+}
+
+@keyframes checkBoxOff {
+    50% {
+        scale: 0.7;
+    }
+
+    100% {
+        scale: 1;
+        background-color: var(--primary);
+
+    }
+}
+
+.buttonClick {
+    animation: buttonClick 0.4s 0s forwards;
+}
+
+@keyframes buttonClick {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.7;
+    }
+
+    100% {
         scale: 1;
     }
 }
@@ -112,5 +191,40 @@ body {
         border-top: 4px solid var(--primary);
         border-left: none;
 
+    }
+}
+
+/* sm */
+@media only screen and (min-width:576px) {
+    .settingsBar {
+        min-width: 40vw;
+    }
+}
+
+/* md */
+@media only screen and (min-width:768px) {
+    .settingsBar {
+        min-width: 35vw;
+    }
+}
+
+/* lg */
+@media only screen and (min-width:992px) {
+    .settingsBar {
+        min-width: 30vw;
+    }
+}
+
+/* xl */
+@media only screen and (min-width:1200px) {
+    .settingsBar {
+        min-width: 25vw;
+    }
+}
+
+/* xxl */
+@media only screen and (min-width:1400px) {
+    .settingsBar {
+        min-width: 20vw;
     }
 }
