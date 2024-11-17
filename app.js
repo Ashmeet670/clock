@@ -58,5 +58,25 @@ function checkboxToggle(box, property) {
         box.classList.add("checkboxOn")
         box.setAttribute('aria-state', "on")
     }
+}
 
+function settingBar(activity) {
+    if (activity == 'show') {
+        document.getElementById("settingBar").classList.remove("d-none")
+        document.getElementById("blurStuff").classList.add("blur")
+
+    }
+
+    if (activity == 'hide') {
+
+        document.getElementById("settingBar").classList.add("settingBarOutAnim")
+
+        setTimeout(() => {
+            document.getElementById("settingBar").classList.remove("settingBarOutAnim")
+            document.getElementById("settingBar").classList.add("d-none")
+            document.getElementById("blurStuff").classList.remove("blur")
+
+        }, 800);
+
+    }
 }
