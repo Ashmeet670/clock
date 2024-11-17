@@ -33,3 +33,11 @@ setInterval(() => {
     document.getElementById("time").innerText = `${Date().split(" ")[4]}`
 
 }, 1000);
+
+
+function buttonClick(btn) {
+  btn.classList.add('buttonClick')
+  setTimeout(() => {
+      btn.classList.remove('buttonClick')
+  }, 350);
+}

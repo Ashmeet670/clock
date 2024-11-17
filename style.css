@@ -19,7 +19,6 @@
 * {
     user-select: none;
     -webkit-user-select: none;
-    cursor: default;
 }
 
 body {
@@ -34,6 +33,7 @@ body {
     margin-top: 15vh;
     min-width: 40vw;
     max-width: 90vw;
+    cursor: default;
 }
 
 .clockFont {
@@ -52,10 +52,49 @@ body {
     border-left: 6px solid var(--primary);
 }
 
-#ampm {
-    font-size: clamp(17px, 5vw, 35px);
+.settings{
+    position: absolute;
+    bottom: 4vh;
+    left: 2vh;
+    background-color: var(--secondary);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px 2px var(--shadow);
+    cursor:  pointer !important;
 }
 
+.settings>svg{
+    fill: var(--primaryText);
+}
+
+.settingsBar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: var(--secondary);
+    z-index: 1;
+}
+
+.settingTitle{
+    font-size: clamp();
+}
+
+.buttonClick{
+    animation: buttonClick 0.4s 0s forwards;
+}
+@keyframes buttonClick {
+    0%{
+        scale: 1;
+    }
+    50%{
+        scale: 0.7;
+    }
+    100%{
+        scale: 1;
+    }
+}
 
 /* sm */
 @media only screen and (max-width:576px) {
