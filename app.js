@@ -23,6 +23,27 @@ const months = {
     "11": 'December'
 };
 
+const light = {
+    "--primary": "rgb(235, 235, 235)",
+    "--secondary": "white",
+    "--primaryText": "black",
+    "--shadow": "rgb(200, 200, 200)",
+    "--checkBoxOn": "rgb(0, 200, 255)",
+}
+
+const dark = {
+    "--primary": "rgb(35, 35, 35)",
+    "--secondary": "black",
+    "--primaryText": "rgb(210, 210, 210)",
+    "--shadow": "rgb(35, 35, 35)",
+    "--checkBoxOn": "rgb(0, 130, 165)",
+}
+
+theme = localStorage.getItem("themes")
+if(theme = null){
+    localStorage.setItem("themes","light")
+}
+
 //   document.getElementById("time").innerText = `${Date().split(" ")[4].split(":")[0]-12}:${Date().split(" ")[4].split(":")[1]}:${Date().split(" ")[4].split(":")[2]}` 12hr
 
 document.getElementById("time").innerText = `${Date().split(" ")[4]}`
@@ -31,9 +52,7 @@ document.getElementById("date").innerText = `${new Date().getDate()} ${months[ne
 
 setInterval(() => {
     document.getElementById("time").innerText = `${Date().split(" ")[4]}`
-
 }, 1000);
-
 
 function buttonClick(btn) {
     btn.classList.add('buttonClick')
@@ -41,7 +60,6 @@ function buttonClick(btn) {
         btn.classList.remove('buttonClick')
     }, 300);
 }
-
 
 function checkboxToggle(box, property) {
     if (box.getAttribute('aria-state') == "on") {
