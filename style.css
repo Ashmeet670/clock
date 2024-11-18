@@ -78,8 +78,9 @@ body {
     background-color: var(--secondary);
     z-index: 1;
     font-size: clamp(20px, 2vw, 30px);
-    animation: settingsIn 0.75s 0s linear forwards;
+    animation: settingsIn 0.5s 0s linear forwards;
     box-shadow: 3px 0px 5px var(--shadow);
+    color: var(--primaryText);
 
 }
 
@@ -101,7 +102,7 @@ body {
 }
 
 .settingBarOutAnim{
-    animation: settingsOut 0.75s 0s linear forwards;
+    animation: settingsOut 0.5s 0s linear forwards;
 }
 @keyframes settingsOut {
 
@@ -137,8 +138,9 @@ body {
     width: 1em;
     aspect-ratio: 1/1;
     cursor: pointer;
-
 }
+
+.checkbox
 
 .checkboxOn {
     animation: checkBoxOn 0.25s 0s forwards;
