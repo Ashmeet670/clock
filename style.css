@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap');
 @font-face {
     font-family: "clockFont";
-    src: url('/DigitalDisplayRegular-ODEO.ttf');
+    src: url('../DigitalDisplayRegular-ODEO.ttf');
 }
 
 @font-face {
     font-family: "clocktext";
-    src: url('/digital-7M.ttf');
+    src: url('../digital-7M.ttf');
 }
 
 :root {
