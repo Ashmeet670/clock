@@ -42,18 +42,23 @@ const dark = {
 }
 
 theme = localStorage.getItem("themes")
-if(theme == null){
-    localStorage.setItem("themes","light")
+showSeconds = localStorage.getItem("showSeconds")
+
+if (showSeconds == null) {
+    localStorage.setItem("showSeconds", "true")
 }
-if(theme== "dark"){
+if (theme == null) {
+    localStorage.setItem("themes", "light")
+}
+if (theme == "dark") {
     document.getElementById("dark").classList.remove("d-none")
     document.getElementById("light").classList.add("d-none")
-    for (i in dark){
+    for (i in dark) {
         document.documentElement.style.setProperty(i, dark[i]);
     }
 }
-if(theme== "light"){
-    for (i in light){
+if (theme == "light") {
+    for (i in light) {
         document.documentElement.style.setProperty(i, light[i]);
     }
 }
@@ -61,13 +66,23 @@ if(theme== "light"){
 
 //   document.getElementById("time").innerText = `${Date().split(" ")[4].split(":")[0]-12}:${Date().split(" ")[4].split(":")[1]}:${Date().split(" ")[4].split(":")[2]}` 12hr
 
+
 document.getElementById("time").innerText = `${Date().split(" ")[4]}`
 document.getElementById("day").innerText = days[new Date().getDay()]
 document.getElementById("date").innerText = `${new Date().getDate()} ${months[new Date().getMonth()]},${new Date().getFullYear()}`
 
 setInterval(() => {
-    document.getElementById("time").innerText = `${Date().split(" ")[4]}`
+    document.getElementById("time").innerText = `${time()}`
 }, 1000);
+
+function time() {
+    if (showSeconds == "true") {
+        return Date().split(" ")[4]
+    }
+    else if (showSeconds == "false") {
+        return Date().split(" ")[4].slice(0, 5)
+    }
+}
 
 function buttonClick(btn) {
     btn.classList.add('buttonClick')
@@ -76,7 +91,7 @@ function buttonClick(btn) {
     }, 300);
 }
 
-function checkboxToggle(box, property) {
+function checkboxToggle(box) {
     if (box.getAttribute('aria-state') == "on") {
         box.classList.remove("checkboxOn")
         box.classList.remove("checkboxAnim")
@@ -85,7 +100,6 @@ function checkboxToggle(box, property) {
             box.classList.remove("checkboxOffAnim")
         }, 450);
         box.setAttribute('aria-state', "off")
-
     }
     else if (box.getAttribute('aria-state') == "off") {
 
@@ -119,11 +133,25 @@ function settingBar(activity) {
     }
 }
 
-function themeSet(theme, themeStr,pressed){
-    for (i in theme){
+function themeSet(theme, themeStr, pressed) {
+    for (i in theme) {
         document.documentElement.style.setProperty(i, theme[i]);
     }
-    localStorage.setItem("themes",themeStr)
+    localStorage.setItem("themes", themeStr)
     pressed.classList.add("d-none")
     document.getElementById(themeStr).classList.remove("d-none")
+}
+
+function seconds(ele) {
+
+    if (ele.getAttribute('aria-state') == "on") {
+        console.log("on in")
+        showSeconds = "true"
+        localStorage.setItem("showSeconds","true")
+        
+    }
+    else if (ele.getAttribute('aria-state') == "off") {
+        showSeconds = "false"
+        localStorage.setItem("showSeconds","false")
+    }
 }
