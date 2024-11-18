@@ -28,6 +28,7 @@ const light = {
     "--secondary": "white",
     "--primaryText": "black",
     "--shadow": "rgb(200, 200, 200)",
+    "--settingOutline": "rgb(200, 200, 200)",
     "--checkBoxOn": "rgb(0, 200, 255)",
 }
 
@@ -36,13 +37,27 @@ const dark = {
     "--secondary": "black",
     "--primaryText": "rgb(210, 210, 210)",
     "--shadow": "rgb(35, 35, 35)",
+    "--settingOutline": "rgb(210, 210, 210)",
     "--checkBoxOn": "rgb(0, 130, 165)",
 }
 
 theme = localStorage.getItem("themes")
-if(theme = null){
+if(theme == null){
     localStorage.setItem("themes","light")
 }
+if(theme== "dark"){
+    document.getElementById("dark").classList.remove("d-none")
+    document.getElementById("light").classList.add("d-none")
+    for (i in dark){
+        document.documentElement.style.setProperty(i, dark[i]);
+    }
+}
+if(theme== "light"){
+    for (i in light){
+        document.documentElement.style.setProperty(i, light[i]);
+    }
+}
+
 
 //   document.getElementById("time").innerText = `${Date().split(" ")[4].split(":")[0]-12}:${Date().split(" ")[4].split(":")[1]}:${Date().split(" ")[4].split(":")[2]}` 12hr
 
@@ -64,6 +79,7 @@ function buttonClick(btn) {
 function checkboxToggle(box, property) {
     if (box.getAttribute('aria-state') == "on") {
         box.classList.remove("checkboxOn")
+        box.classList.remove("checkboxAnim")
         box.classList.add("checkboxOffAnim")
         setTimeout(() => {
             box.classList.remove("checkboxOffAnim")
@@ -74,6 +90,10 @@ function checkboxToggle(box, property) {
     else if (box.getAttribute('aria-state') == "off") {
 
         box.classList.add("checkboxOn")
+        box.classList.add("checkboxAnim")
+        setTimeout(() => {
+            box.classList.remove("checkboxAnim")
+        }, 450);
         box.setAttribute('aria-state', "on")
     }
 }
@@ -88,13 +108,22 @@ function settingBar(activity) {
     if (activity == 'hide') {
 
         document.getElementById("settingBar").classList.add("settingBarOutAnim")
+        document.getElementById("blurStuff").classList.remove("blur")
 
         setTimeout(() => {
             document.getElementById("settingBar").classList.remove("settingBarOutAnim")
             document.getElementById("settingBar").classList.add("d-none")
-            document.getElementById("blurStuff").classList.remove("blur")
 
         }, 800);
 
     }
+}
+
+function themeSet(theme, themeStr,pressed){
+    for (i in theme){
+        document.documentElement.style.setProperty(i, theme[i]);
+    }
+    localStorage.setItem("themes",themeStr)
+    pressed.classList.add("d-none")
+    document.getElementById(themeStr).classList.remove("d-none")
 }
