@@ -42,11 +42,8 @@ const dark = {
 }
 
 theme = localStorage.getItem("themes")
-showSeconds = localStorage.getItem("showSeconds")
+showSeconds = true
 
-if (showSeconds == null) {
-    localStorage.setItem("showSeconds", "true")
-}
 if (theme == null) {
     localStorage.setItem("themes", "light")
 }
@@ -76,10 +73,10 @@ setInterval(() => {
 }, 1000);
 
 function time() {
-    if (showSeconds == "true") {
+    if (showSeconds == true) {
         return Date().split(" ")[4]
     }
-    else if (showSeconds == "false") {
+    else if (showSeconds == false) {
         return Date().split(" ")[4].slice(0, 5)
     }
 }
@@ -145,13 +142,10 @@ function themeSet(theme, themeStr, pressed) {
 function seconds(ele) {
 
     if (ele.getAttribute('aria-state') == "on") {
-        console.log("on in")
-        showSeconds = "true"
-        localStorage.setItem("showSeconds","true")
+        showSeconds = true
         
     }
     else if (ele.getAttribute('aria-state') == "off") {
-        showSeconds = "false"
-        localStorage.setItem("showSeconds","false")
+        showSeconds = false
     }
 }
