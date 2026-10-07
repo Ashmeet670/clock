@@ -74,21 +74,24 @@ setInterval(() => {
 }, 1000);
 
 function time() {
+
+    baseTime = Date().split(" ")[4].split(":")[0] - 12 + ":" + Date().split(" ")[4].split(":")[1]
+
     if (showSeconds == true) {
-        if(hr==12 && Date().split(" ")[4].split(":")[0] > 12){
-            return Date().split(" ")[4].split(":")[0]-12 +":"+ Date().split(" ")[4].split(":")[1] +":"+ Date().split(" ")[4].split(":")[2]
+        if (hr == 12 && Date().split(" ")[4].split(":")[0] > 12) {
+            return baseTime + ":" + Date().split(" ")[4].split(":")[2]
         }
-        else{
+        else {
             return Date().split(" ")[4]
         }
-        
+
     }
     else if (showSeconds == false) {
-        if(hr==12 && Date().split(" ")[4].split(":")[0] > 12){
-            return Date().split(" ")[4].split(":")[0]-12 +":"+ Date().split(" ")[4].split(":")[1]
+        if (hr == 12 && Date().split(" ")[4].split(":")[0] > 12) {
+            return baseTime
         }
-        else{
-            return Date().split(" ")[4].slice(0,5)
+        else {
+            return Date().split(" ")[4].slice(0, 5)
         }
     }
 }
@@ -151,22 +154,12 @@ function themeSet(theme, themeStr, pressed) {
     document.getElementById(themeStr).classList.remove("d-none")
 }
 
-function seconds(ele) {
-
-    if (ele.getAttribute('aria-state') == "on") {
-        showSeconds = true
-        
-    }
-    else if (ele.getAttribute('aria-state') == "off") {
-        showSeconds = false
-    }
+function seconds() {
+    showSeconds ? showSeconds = false : showSeconds = true
+    document.getElementById("time").innerText = `${time()}`
 }
 
-function hours(){
-    if(hr == 24){
-        hr = 12
-    }
-    else if(hr == 12){
-        hr = 24
-    }
+function hours() {
+    hr == 24 ? hr=12 : hr=24
+    document.getElementById("time").innerText = `${time()}`
 }

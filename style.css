@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Funnel+Display&display=swap');
+
 @font-face {
     font-family: "clockFont";
-    src: url('DigitalDisplayRegular-ODEO.ttf');
+    src: url('Digital-Display.woff2') format('woff2');
 }
 
 @font-face {
@@ -88,7 +89,7 @@ body {
 
 }
 
-.blur{
+.blur {
     filter: blur(5px);
     color: black;
 
@@ -105,9 +106,10 @@ body {
     }
 }
 
-.settingBarOutAnim{
+.settingBarOutAnim {
     animation: settingsOut 0.5s 0s linear forwards;
 }
+
 @keyframes settingsOut {
 
     100% {
@@ -144,7 +146,7 @@ body {
     cursor: pointer;
 }
 
-.settingItem>div>svg{
+.settingItem>div>svg {
     cursor: pointer;
 }
 
